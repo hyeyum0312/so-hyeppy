@@ -1,15 +1,21 @@
-import { atom } from "recoil"
+import { atom } from "recoil";
 
-export const user = atom({
+export interface IUser {
+    id: string;
+    pwd: string;
+    name: string;
+}
+
+export const User = atom<IUser>({
     key: "user",
     default: {
-        id: "Admin",
-        pwd: "Admin",
-    },
+        id: "admin",
+        pwd: "admin",
+        name: "관리자"
+    }
 });
 
-export const counting = atom({
-    key: "counting",
-    default: 0,
-
+export const LoginState = atom<boolean>({
+    key: 'LoginState',
+    default: false,
 });
