@@ -1,28 +1,14 @@
 {
-  "name": "so-hyeppy",
+  "name": "react-styled-tailwind",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.11",
-    "@types/react": "^18.0.26",
-    "@types/react-dom": "^18.0.10",
-    "@types/styled-components": "^5.1.26",
-    "ajv": "^8.12.0",
-    "node-sass": "^8.0.0",
     "react": "^18.2.0",
-    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.6.2",
     "react-scripts": "5.0.1",
-    "recoil": "^0.7.6",
-    "recoil-persist": "^4.2.0",
-    "styled-components": "^5.3.6",
-    "styled-reset": "^4.4.5",
-    "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -48,11 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "tailwind-styled-components": "^2.2.0",
-    "tailwindcss": "^3.2.6"
   }
 }

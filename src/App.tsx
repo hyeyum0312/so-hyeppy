@@ -1,21 +1,29 @@
-import { useRecoilState } from "recoil";
-import { IUser, user } from "./atom";
-import Enter from "./Enter";
-import './index.css';
-import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './Layout';
+import Intro from './Pages/Intro';
+import Login from './Pages/Intro/Login';
+import HyeyeonPage from './Pages/Hyeyeon';
+import HyeyeonLogin from './Pages/Hyeyeon/Login';
+import './Styles/tailwind.css';
+import { CookiesProvider } from 'react-cookie';
+import Attendance from './Pages/Attendance';
 
-
-
-export default function App() {
-    const [LoginUser, setLoginUser] = useRecoilState<IUser>(user);
-
+const App = () => {
     return (
-        <div>
-            <Enter/>
-
-            {/*<p>userName: {LoginUser.name}</p>*/}
-            {/*<p>userId: {LoginUser.id}</p>*/}
-            {/*<p>userPwd: {LoginUser.pwd}</p>*/}
-        </div>
+        <CookiesProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<Layout />}>
+                        <Route path="/" element={<Intro />} />
+                        <Route path="/Hyeyeon" element={<HyeyeonPage />} />
+                        <Route path="/Attendance" element={<Attendance />} />
+                    </Route>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/Hyeyeon/login" element={<HyeyeonLogin />} />
+                </Routes>
+            </BrowserRouter>
+        </CookiesProvider>
     );
-}
+};
+
+export default App;
