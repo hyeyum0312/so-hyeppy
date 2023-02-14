@@ -7,6 +7,7 @@ import HyeyeonLogin from './Pages/Hyeyeon/Login';
 import './Styles/tailwind.css';
 import { CookiesProvider } from 'react-cookie';
 import Attendance from './Pages/Attendance';
+import TodoList from "./Pages/TodoList/index";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                         <Route path="/" element={<Intro />} />
                         <Route path="/Hyeyeon" element={<HyeyeonPage />} />
                         <Route path="/Attendance" element={<Attendance />} />
+                        <Route path="/TodoList" element={<TodoList />} />
                     </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/Hyeyeon/login" element={<HyeyeonLogin />} />
