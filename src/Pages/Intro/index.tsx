@@ -18,8 +18,10 @@ const Intro: React.FC = () => {
           <Todolist>
               <TodolistTitle>오늘할일</TodolistTitle>
               <TodoListBody>
-                  <TodoListBodyText>오늘 할일을 입력해보세요</TodoListBodyText>
-                  <TodoListButton onClick={todoListRegistration}>오늘 할일 등록하러가기</TodoListButton>
+                  <TodoListBodyInner>
+                      <TodoListBodyText>오늘 할일을 입력해보세요</TodoListBodyText>
+                      <TodoListButton onClick={todoListRegistration}>오늘 할일 등록하러가기</TodoListButton>
+                  </TodoListBodyInner>
               </TodoListBody>
           </Todolist>
 
@@ -49,11 +51,14 @@ const Todolist = tw.div`
     w-full flex flex-col
 `
 const TodoListBody = tw.div`
-flex flex-col items-center h-full justify-center
+flex flex-col items-center h-full justify-center p-[20px] 
 `
+const TodoListBodyInner = tw.div`
+    flex bg-[#F6F6F6] justify-center items-center w-full h-full flex flex-col
+`
+
 const TodolistTitle = tw.div`
-    text-[18px] font-bold h-[50px] leading-[25px] p-[10px]
-    border-solid border-b-2 border-[#dcdcdd]
+    text-[18px] text-[#565F7C] font-bold h-[50px] leading-[25px] p-[10px]
 `
 const TodoListBodyText = tw.div`
    text-[14px] mb-5

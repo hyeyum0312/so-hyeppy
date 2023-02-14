@@ -4,7 +4,7 @@ import TodoListHead from "./TodoListHead";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: #e9ecef;
+    background: #FFF;
   }
 `;
 const TodoTemplateBlock = styled.div`
