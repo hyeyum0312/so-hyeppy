@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import TodoListHead from "./TodoListHead";
+import SideNav from "../Layout/SideNav";
+import {log} from "util";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -20,13 +22,44 @@ const TodoTemplateBlock = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+
+interface sideNavProps {
+    sideNavPropsName: string;
+    name: string,
+}
+
 const TodoList = () => {
+    const [sideCategory, setSideCategory] =React.useState<any>([]);
+    const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '오늘 할 일', name : '오늘 할 일'});
+    const [categories, setCategories] = React.useState<sideNavProps[]>([]);
+
+
+
+    // const tempFunc = () =>{
+    //     let a: sideNavProps =
+    //         {
+    //             sideNavPropsName : '오늘 할 일',
+    //             name : '오늘 할 일'
+    //         };
+    //
+    //     let b :sideNavProps[] = [];
+    //     for (let i = 0; i < 5; i++) {
+    //         b.push(a)
+    //     }
+    //     return b;
+    // }
+
+    // console.log('tempFunc',tempFunc());
+    // console.log('categories',categories);
+    // console.log('sideCategory',sideCategory);
     return (
         <>
             <GlobalStyle/>
+            {/*{tempFunc().forEach(item => <SideNav post={item}></SideNav>)}*/}
+            <SideNav post={category}></SideNav>
             <TodoTemplateBlock>
                 <TodoListHead></TodoListHead>
-
             </TodoTemplateBlock>
         </>
     );

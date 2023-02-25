@@ -1,27 +1,24 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {CookiesProvider} from 'react-cookie';
+import './Styles/tailwind.css';
 import Layout from './Layout';
 import Intro from './Pages/Intro';
-import Login from './Pages/Intro/Login';
-import HyeyeonPage from './Pages/Hyeyeon';
-import HyeyeonLogin from './Pages/Hyeyeon/Login';
-import './Styles/tailwind.css';
-import { CookiesProvider } from 'react-cookie';
 import Attendance from './Pages/Attendance';
 import TodoList from "./Pages/TodoList/index";
+import IntroLogin from "./Pages/Intro/Login";
+
 
 const App = () => {
     return (
         <CookiesProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route element={<Layout />}>
-                        <Route path="/" element={<Intro />} />
-                        <Route path="/Hyeyeon" element={<HyeyeonPage />} />
-                        <Route path="/Attendance" element={<Attendance />} />
-                        <Route path="/TodoList" element={<TodoList />} />
+                    <Route element={<Layout/>}>
+                        <Route path="/" element={<Intro/>}/>
+                        <Route path="/Attendance" element={<Attendance/>}/>
+                        <Route path="/TodoList" element={<TodoList/>}/>
                     </Route>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/Hyeyeon/login" element={<HyeyeonLogin />} />
+                    <Route path="/IntroLogin" element={<IntroLogin/>}/>
                 </Routes>
             </BrowserRouter>
         </CookiesProvider>

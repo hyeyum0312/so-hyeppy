@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SideNav from "../Layout/SideNav";
 
 const HyeyeonPage: React.FC = () => {
   return (

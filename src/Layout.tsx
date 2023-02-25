@@ -11,7 +11,6 @@ const Layout = () => {
         <>
             <Header></Header>
             <main className="flex">
-                <SideNav></SideNav>
                 <Outlet />
             </main>
             <Footer></Footer>
