@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import tw from 'tailwind-styled-components';
-import {log} from "util";
+import {NavLink} from "react-router-dom";
 
 interface sideNavProps {
     sideNavPropsName: string;
@@ -9,6 +9,7 @@ interface sideNavProps {
 
 let click = () => {
     return alert('헬로');
+
 };
 
 const CategoryList = ({ post }: { post: sideNavProps }) =>{
@@ -21,26 +22,8 @@ const CategoryList = ({ post }: { post: sideNavProps }) =>{
     return <></>
 }
 
-
-const CategoryItem = ({ post }: { post: sideNavProps }) =>{
-    let headTitle = sideNavMap.get(post.name);
-    if (headTitle) {
-        let sideNameData = headTitle?.data
-        console.log('sideNameData',sideNameData)
-        // 0:{name: '근무/휴가'}
-        // 1:{name: '근무/휴가'}
-        return (
-            sideNameData.map((data,key)=>{
-                console.log('data.name>>',data.name)
-                return <SideNavMainSubItem key={key} className="text-[18px]">{data.name}</SideNavMainSubItem>
-            })
-        )
-    } else {
-        return <></>
-    }
-}
-
 const SideNav = ({ post }: { post: sideNavProps }) => {
+    const { name, sideNavPropsName } = post;
     return (
         <>
             <SideNavWrap className="p-[32px]">
@@ -50,11 +33,14 @@ const SideNav = ({ post }: { post: sideNavProps }) => {
                         sideNavMap.get(post.name)&&
                         sideNavMap.get(post.name)?.data &&
                         (sideNavMap.get(post.name)?.data.map((row,index)=>{
+                            console.log('row',row)
                             return (
-                                <SideNavMainSubItem key={index} className="text-[18px]">{row.name}</SideNavMainSubItem>
+                                // <NavLink to={`/${name}`} key={index} className={({ isActive }) => (isActive ? 'navLink is_active' : 'navLink')}>
+                                //     {name}
+                                // </NavLink>
+                                <SideNavMainSubItem key={index} className="text-[18px]" onClick={()=>{}}>{row.name}</SideNavMainSubItem>
                             )
                         }))
-
                     }
                 </SideNavMainSubList>
             </SideNavWrap>

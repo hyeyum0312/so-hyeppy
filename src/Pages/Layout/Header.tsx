@@ -17,7 +17,7 @@ const Header: React.FC = () => {
     // removeCookie('id'); // 쿠키를 삭제
     localStorage.removeItem('access_token'); // localStorage에 저장된 내용 삭제
     setIsLoggedIn(false);
-    navigate('/hyeyeon/login');
+    navigate('/IntroLogin');
   };
   return (
     <HeaderContainer>

@@ -20,7 +20,7 @@ const LoginCheck = () => {
     // 페이지에 들어올때 쿠키로 사용자 체크
     /*** recoil-persist 방식 , 이게 맞나 모름 ㅠㅠ ***/
     if (!login_check) {
-      navigate('/hyeyeon/login');
+      navigate('/IntroLogin');
     }
     /***토큰 , localStorage방식 ***/
     const token = insertedToken; // localStorage 체크하기
