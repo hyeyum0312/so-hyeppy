@@ -11,7 +11,7 @@ const Intro: React.FC = () => {
   return (
     <IntroWrap>
       <IntroHead className="mb-[20px]">
-        <div className="text-[18px] font-bold p-[20px] indent-[20px]">‍😃 so hyeppy님, 오늘도 힘찬 하루 보내세요!</div>
+        <div className="text-[18px] font-bold p-[20px] indent-[20px]">‍😃 혜연님, 오늘도 힘찬 하루 보내세요!</div>
       </IntroHead>
       <IntroBody className="">
         <IntroBodyBox>

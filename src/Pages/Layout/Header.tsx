@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <div className="flex justify-center">
-        <Logo_default>🐱💙 So Hyeppy</Logo_default>
+        <Logo_default>🐱💙 Hyeyeon</Logo_default>
         <Nav></Nav>
       </div>
       <div className="flex justify-center items-center ">

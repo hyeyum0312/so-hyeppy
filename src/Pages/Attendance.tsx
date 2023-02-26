@@ -7,7 +7,7 @@ interface sideNavProps {
 }
 
 const Attendance: React.FC = () => {
-const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '근무/휴가', name : '근무/휴가'});
+const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '근무/휴가', name : 'Attendance'});
   return (
     <div className="w-full h-[100vh] bg-yellow-50 flex">
         <SideNav post ={category}></SideNav>

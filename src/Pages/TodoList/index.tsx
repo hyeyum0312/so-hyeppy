@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import TodoListHead from "./TodoListHead";
 import SideNav from "../Layout/SideNav";
 import {log} from "util";
+import TodoListBody from "./TodoListBody";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,28 +32,8 @@ interface sideNavProps {
 
 const TodoList = () => {
     const [sideCategory, setSideCategory] =React.useState<any>([]);
-    const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '오늘 할 일', name : '오늘 할 일'});
-    const [categories, setCategories] = React.useState<sideNavProps[]>([]);
-
-
-
-    // const tempFunc = () =>{
-    //     let a: sideNavProps =
-    //         {
-    //             sideNavPropsName : '오늘 할 일',
-    //             name : '오늘 할 일'
-    //         };
-    //
-    //     let b :sideNavProps[] = [];
-    //     for (let i = 0; i < 5; i++) {
-    //         b.push(a)
-    //     }
-    //     return b;
-    // }
-
-    // console.log('tempFunc',tempFunc());
-    // console.log('categories',categories);
-    // console.log('sideCategory',sideCategory);
+    const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '오늘 할 일', name : 'TodoList'});
+    // const [categories, setCategories] = React.useState<sideNavProps[]>([]);
     return (
         <>
             <GlobalStyle/>
@@ -60,8 +41,37 @@ const TodoList = () => {
             <SideNav post={category}></SideNav>
             <TodoTemplateBlock>
                 <TodoListHead></TodoListHead>
+                <TodoListBody></TodoListBody>
             </TodoTemplateBlock>
         </>
     );
 };
 export default TodoList;
+
+
+
+
+
+
+
+
+
+
+
+// const tempFunc = () =>{
+//     let a: sideNavProps =
+//         {
+//             sideNavPropsName : '오늘 할 일',
+//             name : '오늘 할 일'
+//         };
+//
+//     let b :sideNavProps[] = [];
+//     for (let i = 0; i < 5; i++) {
+//         b.push(a)
+//     }
+//     return b;
+// }
+
+// console.log('tempFunc',tempFunc());
+// console.log('categories',categories);
+// console.log('sideCategory',sideCategory);
