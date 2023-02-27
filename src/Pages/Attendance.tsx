@@ -15,7 +15,7 @@ const Attendance: React.FC = () => {
         <SideNav post ={category}></SideNav>
 
         {
-            params===''&&
+            params.length===0&&
             <div className="w-full">
                 <div className="text-[300px] text-center">🐻‍️</div>
                 <div className="text-[90px] text-center">반가워</div>
