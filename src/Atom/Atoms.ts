@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { recoilPersist } from 'recoil-persist';
+import { recoilPersist } from 'recoil-persist'; // sessionStorage 저장하기
 
 export interface IUser {
   id: string;
@@ -20,4 +20,14 @@ export const LoginState = atom<boolean>({
   key: 'LoginState',
   default: false,
   effects_UNSTABLE: [persistAtom],
+});
+
+export const cookieState = atom({
+  key: 'cookieState',
+  default: []
+});
+
+export const urlParams = atom<any>({
+  key: 'paramData',
+  default: []
 });

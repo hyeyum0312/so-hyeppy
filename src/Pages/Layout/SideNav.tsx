@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import tw from 'tailwind-styled-components';
-import {NavLink} from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import {urlParams} from "../../Atom/Atoms";
 
 interface sideNavProps {
     sideNavPropsName: string;
@@ -21,9 +23,19 @@ const CategoryList = ({ post }: { post: sideNavProps }) =>{
     }
     return <></>
 }
-
 const SideNav = ({ post }: { post: sideNavProps }) => {
+    const [urlCheck, setUrlCheck] = useRecoilState(urlParams);
+    const [select,setSelect] = useState<string>();
+    const navigate = useNavigate();
+
+    // click -> 클릭한 카테고리 파라미터 넘김
+    const handleClick = (name: string,type: string,page:string,params:string) => {
+        setSelect(name); // 클릭한 nav is_active
+        navigate(`/${params}?${type?type:''}`);
+        setUrlCheck(type);
+    };
     const { name, sideNavPropsName } = post;
+    console.log('name, sideNavPropsName',name, sideNavPropsName)
     return (
         <>
             <SideNavWrap className="p-[32px]">
@@ -32,13 +44,15 @@ const SideNav = ({ post }: { post: sideNavProps }) => {
                     {
                         sideNavMap.get(post.name)&&
                         sideNavMap.get(post.name)?.data &&
-                        (sideNavMap.get(post.name)?.data.map((row,index)=>{
+                        (sideNavMap.get(post.name)?.data.map((row:any,index:number)=>{
                             console.log('row',row)
                             return (
-                                // <NavLink to={`/${name}`} key={index} className={({ isActive }) => (isActive ? 'navLink is_active' : 'navLink')}>
-                                //     {name}
-                                // </NavLink>
-                                <SideNavMainSubItem key={index} className="text-[18px]" onClick={()=>{}}>{row.name}</SideNavMainSubItem>
+                                <SideNavMainSubItem key={index} onClick={()=>{
+                                    handleClick(row.name,row.type,sideNavPropsName,name);
+                                }}className={`${select === row.name ? 'sideNav is_active' : ''}`} >
+                                    {row.name}
+                                </SideNavMainSubItem>
+                                // <SideNavMainSubItem key={index} className="text-[18px]" onClick={()=>{}}>{row.name}</SideNavMainSubItem>
                             )
                         }))
                     }
@@ -52,13 +66,13 @@ const sideNavArr = {
     TodoList : {
         id: 1,
         main: 'To-Do-List',
-        data: [{name:'오늘 할 일'},{name:'지난 할 일'}]
+        data: [{name:'오늘 할 일', type:'today'},{name:'지난 할 일',type:'past'}]
         // data: ['오늘 할 일','지난 할 일']
     },
     Attendance: {
         id: 2,
         main: '근무/휴가',
-        data: [{name:'근무/휴가'}]
+        data: [{name:'근무/휴가', type: ''}]
     }
 }
 

@@ -9,7 +9,8 @@
   margin-left: 10px;
 }
 .navLink:hover,
-.navLink.is_active {
+.navLink.is_active,
+.sideNav.is_active {
   text-decoration: underline;
   color: #4B77EE;
 }

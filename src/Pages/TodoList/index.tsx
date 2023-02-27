@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import TodoListHead from "./TodoListHead";
 import SideNav from "../Layout/SideNav";
-import {log} from "util";
+import { useParams } from 'react-router-dom';
 import TodoListBody from "./TodoListBody";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {urlParams} from "../../Atom/Atoms";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -27,22 +29,57 @@ const TodoTemplateBlock = styled.div`
 
 interface sideNavProps {
     sideNavPropsName: string;
-    name: string,
+    name: string
 }
 
 const TodoList = () => {
-    const [sideCategory, setSideCategory] =React.useState<any>([]);
+    let { username } = useParams();
+    console.log('username',username)
+    const params = useRecoilValue(urlParams);
+    console.log('params',params);
     const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '오늘 할 일', name : 'TodoList'});
     // const [categories, setCategories] = React.useState<sideNavProps[]>([]);
     return (
         <>
-            <GlobalStyle/>
-            {/*{tempFunc().forEach(item => <SideNav post={item}></SideNav>)}*/}
-            <SideNav post={category}></SideNav>
-            <TodoTemplateBlock>
-                <TodoListHead></TodoListHead>
-                <TodoListBody></TodoListBody>
-            </TodoTemplateBlock>
+            {
+                params.length == 0 &&
+                <>
+                    <GlobalStyle/>
+                    {/*{tempFunc().forEach(item => <SideNav post={item}></SideNav>)}*/}
+                    <SideNav post={category}></SideNav>
+                    <TodoTemplateBlock>
+                        <div>룰루</div>
+                        <TodoListHead></TodoListHead>
+                        <TodoListBody></TodoListBody>
+                    </TodoTemplateBlock>
+                </>
+            }
+            {
+                params == 'today' &&
+                <>
+                    <GlobalStyle/>
+                    {/*{tempFunc().forEach(item => <SideNav post={item}></SideNav>)}*/}
+                    <SideNav post={category}></SideNav>
+                    <TodoTemplateBlock>
+                        <div>룰루</div>
+                        <TodoListHead></TodoListHead>
+                        <TodoListBody></TodoListBody>
+                    </TodoTemplateBlock>
+                </>
+            }
+            {
+                params == 'past' &&
+                <>
+                    <GlobalStyle/>
+                    {/*{tempFunc().forEach(item => <SideNav post={item}></SideNav>)}*/}
+                    <SideNav post={category}></SideNav>
+                    <TodoTemplateBlock>
+                        <div>랄라</div>
+                        <TodoListHead></TodoListHead>
+                        <TodoListBody></TodoListBody>
+                    </TodoTemplateBlock>
+                </>
+            }
         </>
     );
 };
