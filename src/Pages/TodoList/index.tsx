@@ -38,7 +38,6 @@ const TodoList = () => {
     const params = useRecoilValue(urlParams);
     console.log('params',params);
     const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '오늘 할 일', name : 'TodoList'});
-    // const [categories, setCategories] = React.useState<sideNavProps[]>([]);
     return (
         <>
             {
@@ -71,7 +70,6 @@ const TodoList = () => {
                 params == 'past' &&
                 <>
                     <GlobalStyle/>
-                    {/*{tempFunc().forEach(item => <SideNav post={item}></SideNav>)}*/}
                     <SideNav post={category}></SideNav>
                     <TodoTemplateBlock>
                         <div>랄라</div>

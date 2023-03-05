@@ -3,7 +3,7 @@ import {CookiesProvider} from 'react-cookie';
 import './Styles/tailwind.css';
 import Layout from './Layout';
 import Intro from './Pages/Intro';
-import Attendance from './Pages/Attendance';
+import Attendance from './Pages/Attendance/index';
 import TodoList from "./Pages/TodoList/index";
 import IntroLogin from "./Pages/Intro/Login";
 

@@ -8,23 +8,17 @@ interface sideNavProps {
     sideNavPropsName: string;
     name: string;
 }
-
-let click = () => {
-    return alert('헬로');
-
-};
-
 const CategoryList = ({ post }: { post: sideNavProps }) =>{
     let headTitle = sideNavMap.get(post.name);
     if (headTitle) {
         let sideNameDataMain = headTitle?.main // Object is possibly 'null' 에러가 계속 떠서 옵셔널체이닝 사용하여 처리.
-        console.log('sideNameDataMain',sideNameDataMain)
         return <SideNavMain>{sideNameDataMain}</SideNavMain>
     }
     return <></>
 }
 const SideNav = ({ post }: { post: sideNavProps }) => {
     const [urlCheck, setUrlCheck] = useRecoilState(urlParams);
+    console.log('urlCheck',urlCheck)
     const [select,setSelect] = useState<string>();
     const navigate = useNavigate();
 
@@ -35,31 +29,57 @@ const SideNav = ({ post }: { post: sideNavProps }) => {
         setUrlCheck(type);
     };
     const { name, sideNavPropsName } = post;
-    console.log('name, sideNavPropsName',name, sideNavPropsName)
-    return (
-        <>
-            <SideNavWrap className="p-[32px]">
-                <CategoryList post={post}></CategoryList>
-                <SideNavMainSubList>
-                    {
-                        sideNavMap.get(post.name)&&
-                        sideNavMap.get(post.name)?.data &&
-                        (sideNavMap.get(post.name)?.data.map((row:any,index:number)=>{
-                            console.log('row',row)
-                            return (
-                                <SideNavMainSubItem key={index} onClick={()=>{
-                                    handleClick(row.name,row.type,sideNavPropsName,name);
-                                }}className={`${select === row.name ? 'sideNav is_active' : ''}`} >
-                                    {row.name}
-                                </SideNavMainSubItem>
-                                // <SideNavMainSubItem key={index} className="text-[18px]" onClick={()=>{}}>{row.name}</SideNavMainSubItem>
-                            )
-                        }))
-                    }
-                </SideNavMainSubList>
-            </SideNavWrap>
-        </>
-    );
+    if (urlCheck.length == 0) {
+        console.log('첫번째')
+        return (
+            <>
+                <SideNavWrap className="p-[32px] min-w-[240px]">
+                    <CategoryList post={post}></CategoryList>
+                    <SideNavMainSubList>
+                        {
+                            sideNavMap.get(post.name)&&
+                            sideNavMap.get(post.name)?.data &&
+                            (sideNavMap.get(post.name)?.data.map((row:any,index:number)=>{
+                                console.log('index',index)
+                                return (
+                                    <SideNavMainSubItem key={index} onClick={()=>{
+                                        handleClick(row.name,row.type,sideNavPropsName,name);
+                                    }}className= {`${index == 0 ? "sideNav is_active" : ""};`} >
+                                        {row.name}
+                                    </SideNavMainSubItem>
+                                )
+                            }))
+                        }
+                    </SideNavMainSubList>
+                </SideNavWrap>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <SideNavWrap className="p-[32px]">
+                    <CategoryList post={post}></CategoryList>
+                    <SideNavMainSubList>
+                        {
+                            sideNavMap.get(post.name)&&
+                            sideNavMap.get(post.name)?.data &&
+                            (sideNavMap.get(post.name)?.data.map((row:any,index:number)=>{
+                                console.log('index',index)
+
+                                return (
+                                    <SideNavMainSubItem key={index} onClick={()=>{
+                                        handleClick(row.name,row.type,sideNavPropsName,name);
+                                    }}className={` ${select === row.name ? 'sideNav is_active' : ''};`} >
+                                        {row.name}
+                                    </SideNavMainSubItem>
+                                )
+                            }))
+                        }
+                    </SideNavMainSubList>
+                </SideNavWrap>
+            </>
+        );
+    }
 };
 
 const sideNavArr = {
@@ -75,13 +95,13 @@ const sideNavArr = {
         data: [{name:'근무/휴가', type: ''}]
     }
 }
-
 const entry = Object.entries(sideNavArr);
 const sideNavMap = new Map(entry);
 console.log('sideNavMap',sideNavMap);
 
 const SideNavWrap = tw.div`
-  w-[240px] h-[calc(100vh + 50px)]] bg-[#F8F8F8]
+  min-w-[240px] w-[240px] h-[calc(100vh + 50px)]] bg-[#F8F8F8]
+  
 `;
 const SideNavMain = tw.div`
     text-[20px] font-bold
@@ -91,6 +111,7 @@ const SideNavMainSubList = tw.ul`
 `;
 const SideNavMainSubItem = tw.li`
     text-[16px]
+    cursor-pointer
 `;
 
 
