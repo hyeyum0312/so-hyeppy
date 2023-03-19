@@ -6,7 +6,7 @@ import LoginCheck from './Components/LoginCheck';
 import SideNav from "./Pages/Layout/SideNav";
 
 const Layout = () => {
-    LoginCheck();
+    // LoginCheck();
     return (
         <>
             <Header></Header>

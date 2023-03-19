@@ -6,6 +6,7 @@ import Intro from './Pages/Intro';
 import Attendance from './Pages/Attendance/index';
 import TodoList from "./Pages/TodoList/index";
 import IntroLogin from "./Pages/Intro/Login";
+import IntroLogin2 from "./Pages/Intro/Login2";
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
                         <Route path="/TodoList" element={<TodoList/>}/>
                     </Route>
                     <Route path="/IntroLogin" element={<IntroLogin/>}/>
+                    <Route path="/IntroLogin2" element={<IntroLogin2/>}/>
                 </Routes>
             </BrowserRouter>
         </CookiesProvider>
