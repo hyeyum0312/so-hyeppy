@@ -4,7 +4,9 @@ import {useRecoilValue} from "recoil";
 import {urlParams} from "../../Atom/Atoms";
 import tw from "tailwind-styled-components";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
-import Modal from "../../Components/popup";
+import Modal from "../../Components/Modal";
+import useModal from "../../hooks/useModal";
+
 
 interface sideNavProps {
     sideNavPropsName: string;
@@ -12,7 +14,10 @@ interface sideNavProps {
 }
 
 const Attendance: React.FC = () => {
-    const [isShowing, setIsShowing] = useState(false);
+    const { isShowing, toggle } = useModal();
+    const [message, setMessage] = useState();
+
+    // const [isShowing, setIsShowing] = useState(false);
     const params = useRecoilValue(urlParams);
     const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '근무/휴가', name : 'Attendance'});
     const [month, setMonth] = useState<any>(3);
@@ -40,8 +45,10 @@ const Attendance: React.FC = () => {
     }
 
     // 근태현황
-    const openModal = () => {
-        setIsShowing(true);
+    const openModal = (info:any) => {
+        console.log('info >> ',info)
+        setMessage(info);
+        toggle();
     };
 
     return (
@@ -58,9 +65,11 @@ const Attendance: React.FC = () => {
                         <button className="text-[24px] ml-[15px]"><HiOutlineChevronRight onClick={onIncrease}/></button>
                     </div>
                     <div className="flex justify-end ">
-                        <button className="bg-[#086bde] text-white text-[14px] h-[36px] py-[5px] px-[16px] rounded-[4px]" onClick={openModal}>내 근태 현황 / 신청</button>
+                        <button className="bg-[#086bde] text-white text-[14px] h-[36px] py-[5px] px-[16px] rounded-[4px]" onClick={() => openModal("내근태현황을 보여줘")}>내 근태 현황 / 신청</button>
                     </div>
-                    <div>{isShowing ? <Modal message="signUp" toggle={isShowing}/> : null}</div>
+
+                    <Modal isShowing={isShowing} hide={toggle} message={message} />
+                    {/*<div>{isShowing ? <Modal message="signUp" toggle={isShowing}/> : null}</div>*/}
 
 
                     <TeamContainerHeader>
