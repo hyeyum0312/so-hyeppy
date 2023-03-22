@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {BsX} from "react-icons/bs";
 
+// 하고싶은것
+// 팝업의 모양이 다 다르면?!
 
 const Modal = ({ isShowing, hide, message }:any) =>
     isShowing

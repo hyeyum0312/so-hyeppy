@@ -4,7 +4,8 @@ import {useRecoilValue} from "recoil";
 import {urlParams} from "../../Atom/Atoms";
 import tw from "tailwind-styled-components";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
-import Modal from "../../Components/Modal";
+// import Modal from "../../Components/Modal";
+import Modal from "../../Modal/index";
 import useModal from "../../hooks/useModal";
 
 
@@ -16,6 +17,7 @@ interface sideNavProps {
 const Attendance: React.FC = () => {
     const { isShowing, toggle } = useModal();
     const [message, setMessage] = useState();
+    const [modalForm, setModalForm] = useState();
 
     // const [isShowing, setIsShowing] = useState(false);
     const params = useRecoilValue(urlParams);
@@ -45,9 +47,11 @@ const Attendance: React.FC = () => {
     }
 
     // 근태현황
-    const openModal = (info:any) => {
+    const openModal = (info:any,modalForm:any) => {
+        console.log('modalForm >> ',modalForm)
         console.log('info >> ',info)
         setMessage(info);
+        setModalForm(modalForm);
         toggle();
     };
 
@@ -65,10 +69,10 @@ const Attendance: React.FC = () => {
                         <button className="text-[24px] ml-[15px]"><HiOutlineChevronRight onClick={onIncrease}/></button>
                     </div>
                     <div className="flex justify-end ">
-                        <button className="bg-[#086bde] text-white text-[14px] h-[36px] py-[5px] px-[16px] rounded-[4px]" onClick={() => openModal("내근태현황을 보여줘")}>내 근태 현황 / 신청</button>
+                        <button className="bg-[#086bde] text-white text-[14px] h-[36px] py-[5px] px-[16px] rounded-[4px]" onClick={() => openModal("hello","full")}>내 근태 현황 / 신청</button>
                     </div>
 
-                    <Modal isShowing={isShowing} hide={toggle} message={message} />
+                    <Modal isShowing={isShowing} hide={toggle} message={message} modalForm={modalForm} />
                     {/*<div>{isShowing ? <Modal message="signUp" toggle={isShowing}/> : null}</div>*/}
 
 
