@@ -7,7 +7,7 @@ import Attendance from './Pages/Attendance/index';
 import TodoList from "./Pages/TodoList/index";
 import IntroLogin from "./Pages/Intro/Login";
 import IntroLogin2 from "./Pages/Intro/Login2";
-
+import 'react-datepicker/dist/react-datepicker.css';
 
 const App = () => {
     return (
@@ -18,6 +18,7 @@ const App = () => {
                         <Route path="/" element={<Intro/>}/>
                         <Route path="/Attendance" element={<Attendance/>}/>
                         <Route path="/TodoList" element={<TodoList/>}/>
+                        <Route path="/my-work" element={<Attendance/>}/>
                     </Route>
                     <Route path="/IntroLogin" element={<IntroLogin/>}/>
                     <Route path="/IntroLogin2" element={<IntroLogin2/>}/>

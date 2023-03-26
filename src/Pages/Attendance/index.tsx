@@ -4,10 +4,11 @@ import {useRecoilValue} from "recoil";
 import {urlParams} from "../../Atom/Atoms";
 import tw from "tailwind-styled-components";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
-// import Modal from "../../Components/Modal";
-import Modal from "../../Modal/index";
 import useModal from "../../hooks/useModal";
-
+import {useParams} from "react-router-dom";
+import Current from "./current";
+import {DatePickerComponent} from "../../Components/datepicker";
+import Mywork from "../../Modal/mywork";
 
 interface sideNavProps {
     sideNavPropsName: string;
@@ -15,9 +16,12 @@ interface sideNavProps {
 }
 
 const Attendance: React.FC = () => {
+    let { username } = useParams();
     const { isShowing, toggle } = useModal();
     const [message, setMessage] = useState();
     const [modalForm, setModalForm] = useState();
+
+    const [modalOpen, setModalOpen] = useState<boolean>();
 
     // const [isShowing, setIsShowing] = useState(false);
     const params = useRecoilValue(urlParams);
@@ -68,14 +72,6 @@ const Attendance: React.FC = () => {
                         <div className="text-[24px]">{today.year}년 {today.month}월</div>
                         <button className="text-[24px] ml-[15px]"><HiOutlineChevronRight onClick={onIncrease}/></button>
                     </div>
-                    <div className="flex justify-end ">
-                        <button className="bg-[#086bde] text-white text-[14px] h-[36px] py-[5px] px-[16px] rounded-[4px]" onClick={() => openModal("hello","full")}>내 근태 현황 / 신청</button>
-                    </div>
-
-                    <Modal isShowing={isShowing} hide={toggle} message={message} modalForm={modalForm} />
-                    {/*<div>{isShowing ? <Modal message="signUp" toggle={isShowing}/> : null}</div>*/}
-
-
                     <TeamContainerHeader>
                         <ul>
                             <li className="flex h-[37px] p-[10px] text-[14px] mb-[5px]">
@@ -100,6 +96,10 @@ const Attendance: React.FC = () => {
                     </TeamContainerHeader>
                 </AttendanceMain>
             </div>
+        }
+        {
+            params == 'my-work' &&
+            <Current></Current>
         }
     </div>
     );

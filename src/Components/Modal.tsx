@@ -26,3 +26,18 @@ const Modal = ({ isShowing, hide, message }:any) =>
         )
         : null;
 export default Modal;
+//
+// // src/components/ModalPortal.ts
+// import { ReactNode } from 'react';
+// import ReactDom from 'react-dom';
+// interface Props {
+//     children: ReactNode;
+// }
+//
+// const Modal = ({ children }: Props) => {
+//     const el = document.getElementById('modal-root') as HTMLElement;
+//
+//     return ReactDom.createPortal(children, el);
+// };
+//
+// export default Modal;

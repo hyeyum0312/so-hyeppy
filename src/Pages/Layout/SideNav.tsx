@@ -23,9 +23,13 @@ const SideNav = ({ post }: { post: sideNavProps }) => {
     const navigate = useNavigate();
 
     // click -> 클릭한 카테고리 파라미터 넘김
-    const handleClick = (name: string,type: string,page:string,params:string) => {
-        setSelect(name); // 클릭한 nav is_active
-        navigate(`/${params}?${type?type:''}`);
+    const handleClick = (name: string,type: string,page:string,params:string, divide:boolean) => {
+        if (divide) {
+            navigate(`/${type}`);
+        } else {
+            navigate(`/${params}?${type?type:''}`);
+        }
+        // setSelect(name); // 클릭한 nav is_active
         setUrlCheck(type);
     };
     const { name, sideNavPropsName } = post;
@@ -43,7 +47,7 @@ const SideNav = ({ post }: { post: sideNavProps }) => {
                                 console.log('index',index)
                                 return (
                                     <SideNavMainSubItem key={index} onClick={()=>{
-                                        handleClick(row.name,row.type,sideNavPropsName,name);
+                                        handleClick(row.name,row.type,sideNavPropsName,name, row.divide);
                                     }}className= {`${index == 0 ? "sideNav is_active" : ""};`} >
                                         {row.name}
                                     </SideNavMainSubItem>
@@ -68,7 +72,7 @@ const SideNav = ({ post }: { post: sideNavProps }) => {
 
                                 return (
                                     <SideNavMainSubItem key={index} onClick={()=>{
-                                        handleClick(row.name,row.type,sideNavPropsName,name);
+                                        handleClick(row.name,row.type,sideNavPropsName,name, row.divide);
                                     }}className={` ${select === row.name ? 'sideNav is_active' : ''};`} >
                                         {row.name}
                                     </SideNavMainSubItem>
@@ -92,7 +96,7 @@ const sideNavArr = {
     Attendance: {
         id: 2,
         main: '근무/휴가',
-        data: [{name:'근무/휴가', type: ''}]
+        data: [{name:'근무/휴가', type: ''},{name:'내 근태 현황/신청', divide:true, type: 'my-work'}]
     }
 }
 const entry = Object.entries(sideNavArr);
