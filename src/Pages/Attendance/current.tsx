@@ -8,6 +8,7 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 // import Modal from "../../Modal/index";
 import useModal from "../../hooks/useModal";
 import Mywork from "../../Modal/mywork";
+import Modal from "../../Components/Modal";
 
 
 interface sideNavProps {
@@ -34,17 +35,21 @@ const Current: React.FC = () => {
     };
 
     return (
-        <div className="w-full overflow-auto">
-            <p className="bg-white text-[24px] h-[60px]">근태</p>
-            <div className="flex justify-end ">
-                <button className="bg-[#086bde] text-white text-[14px] h-[36px] py-[5px] px-[16px] rounded-[4px]" onClick={() => openModal("hello","small")}>내 근태 현황 / 신청</button>
+        <>
+            <div className="w-full overflow-auto">
+                <p className="bg-white text-[24px] h-[60px]">근태</p>
+                <div className="flex justify-end ">
+                    <button className="bg-[#086bde] text-white text-[14px] h-[36px] py-[5px] px-[16px] rounded-[4px]" onClick={() => openModal("hello","small")}>내 근태 현황 / 신청</button>
+                </div>
+                {
+                    isShowing?
+                        <Modal isShowing={isShowing} hide={toggle} message={message} modalForm={modalForm} >
+                            <Mywork hide={toggle}/>
+                        </Modal>
+                    : ''
+                }
             </div>
-            {/*<Modal isShowing={isShowing} hide={toggle} message={message} modalForm={modalForm} />*/}
-            {/*<Modal isShowing={isShowing} hide={toggle} message={message} modalForm={modalForm}>*/}
-            {/*    <Mywork />*/}
-            {/*</Modal>*/}
-
-        </div>
+        </>
     );
 };
 const AttendanceMain = tw.div`

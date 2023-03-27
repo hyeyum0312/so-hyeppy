@@ -99,7 +99,11 @@ const Attendance: React.FC = () => {
         }
         {
             params == 'my-work' &&
-            <Current></Current>
+            <>
+                <Current></Current>
+            </>
+
+
         }
     </div>
     );
