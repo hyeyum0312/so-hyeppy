@@ -10,6 +10,8 @@ const DatePickerComponent = () => {
         const [start, end] = dates;
         setStartDate(start);
         setEndDate(end);
+        console.log('startDate',startDate)
+        console.log('endDate',endDate)
     };
     return (
         <DatePicker
@@ -19,7 +21,7 @@ const DatePickerComponent = () => {
             endDate={endDate}
             selectsRange
             selectsDisabledDaysInRange
-            inline
+            // inline
         />
     );
 }

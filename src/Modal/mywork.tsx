@@ -1,25 +1,15 @@
 import React, {useState} from "react";
 import {HiOutlineXMark} from "react-icons/hi2";
-// import DatePickerComponent from "../Components/datepicker";
-import datepicker from "../Components/datepicker";
-// import DatePicker from "react-datepicker";
 import DatePickerComponent from "../Components/datepicker";
-// let hyeyeon = () => {
-//     alert('클릭');
-//     DatePickerComponent();
-// }
 
 const myWorkModal = ({ hide }: any) => {
-    let flag = false
-    let calendar = () => {
-        flag = true
-    }
+
     return (
         <>
             <div className="defaultModalWrap">
 
             </div>
-            <div className="w-[400px] h-[300px] bg-white absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <div className="w-[400px] h-[328px] bg-white absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
                 <HiOutlineXMark
                     type="button"
                     data-dismiss="modal"
@@ -34,7 +24,7 @@ const myWorkModal = ({ hide }: any) => {
                 <div className="py-[30px] px-[20px]">
                     <div className="w-full h-[70px] text-[14px] mb-[20px]">
                         <div className="mb-5">날짜</div>
-                        <div onClick={calendar} className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]">
+                        <div className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]">
                             <DatePickerComponent></DatePickerComponent>
                         </div>
                     </div>
@@ -99,6 +89,10 @@ const myWorkModal = ({ hide }: any) => {
                             <option value="PUBLIC:HEALTHSCREEN">건강검진</option>
                         </select>
                     </div>
+                </div>
+                <div className="w-full pl-[240px]">
+                    <button onClick={hide} className="bg-[#FAFAFA] w-[54px] h-[30px] ml-[6px]">취소</button>
+                    <button className="bg-[#286DD6] text-[#fff] w-[54px] h-[30px]">확인</button>
                 </div>
             </div>
         </>
