@@ -7,13 +7,15 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import useModal from "../../hooks/useModal";
 import {useParams} from "react-router-dom";
 import Current from "./current";
-import {DatePickerComponent} from "../../Components/datepicker";
+import datepicker from "../../Components/datepicker";
 import Mywork from "../../Modal/mywork";
+import DatePickerComponent from "../../Components/datepicker";
 
 interface sideNavProps {
     sideNavPropsName: string;
     name: string;
 }
+
 
 const Attendance: React.FC = () => {
     let { username } = useParams();
@@ -58,6 +60,7 @@ const Attendance: React.FC = () => {
         setModalForm(modalForm);
         toggle();
     };
+
 
     return (
     <div className="w-full h-[100vh] flex">

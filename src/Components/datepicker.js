@@ -2,7 +2,8 @@ import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 
-export const DatePickerComponent = () => {
+const DatePickerComponent = () => {
+    console.log('달력');
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
     const onChange = (dates) => {
@@ -22,3 +23,4 @@ export const DatePickerComponent = () => {
         />
     );
 }
+export default DatePickerComponent;

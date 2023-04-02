@@ -1,9 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import {HiOutlineXMark} from "react-icons/hi2";
-
+// import DatePickerComponent from "../Components/datepicker";
+import datepicker from "../Components/datepicker";
+// import DatePicker from "react-datepicker";
+import DatePickerComponent from "../Components/datepicker";
+// let hyeyeon = () => {
+//     alert('클릭');
+//     DatePickerComponent();
+// }
 
 const myWorkModal = ({ hide }: any) => {
-    console.log('hide',hide)
+    let flag = false
+    let calendar = () => {
+        flag = true
+    }
     return (
         <>
             <div className="defaultModalWrap">
@@ -24,8 +34,9 @@ const myWorkModal = ({ hide }: any) => {
                 <div className="py-[30px] px-[20px]">
                     <div className="w-full h-[70px] text-[14px] mb-[20px]">
                         <div className="mb-5">날짜</div>
-                        {/*<div className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]" onClick={ckck}></div>*/}
-                        <input type="date" placeholder="YYYY-MM-DD ~ YYYY-MM-DD" className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]"></input>
+                        <div onClick={calendar} className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]">
+                            <DatePickerComponent></DatePickerComponent>
+                        </div>
                     </div>
                     <div className="w-full h-[70px] text-[14px]">
                         <div className="mb-5">날짜</div>
