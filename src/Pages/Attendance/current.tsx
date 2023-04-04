@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import SideNav from "../Layout/SideNav";
 import {useRecoilValue} from "recoil";
-import {urlParams} from "../../Atom/Atoms";
+import {inputObjectState, urlParams} from "../../Atom/Atoms";
 import tw from "tailwind-styled-components";
 import useModal from "../../hooks/useModal";
 import Mywork from "../../Modal/mywork";
 import Modal from "../../Components/Modal";
-
 
 interface sideNavProps {
     sideNavPropsName: string;

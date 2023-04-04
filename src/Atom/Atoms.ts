@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 import { recoilPersist } from 'recoil-persist'; // sessionStorage 저장하기
 
 export interface IUser {
@@ -30,4 +30,23 @@ export const cookieState = atom({
 export const urlParams = atom<any>({
   key: 'paramData',
   default: []
+});
+
+export const inputValue1State = atom({
+  key: 'inputValueState',
+  default: '',
+});
+
+export const inputValue2State = atom({
+  key: 'inputValue2State',
+  default: '',
+});
+
+export const inputObjectState = selector({
+  key: 'inputObjectState',
+  get: ({ get }) => {
+    const input1 = get(inputValue1State);
+    const input2 = get(inputValue2State);
+    return { period:input1, type:input2 };
+  },
 });

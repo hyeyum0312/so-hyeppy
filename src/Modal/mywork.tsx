@@ -1,9 +1,25 @@
 import React, {useState} from "react";
 import {HiOutlineXMark} from "react-icons/hi2";
 import DatePickerComponent from "../Components/datepicker";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {inputValue1State,inputValue2State,inputObjectState} from "../Atom/Atoms";
 
-const myWorkModal = ({ hide }: any) => {
 
+const MyWorkModal = ({ hide }: any) => {
+    const [input1Value, setInput2Value] = useRecoilState(inputValue2State);
+    // const [inputObj, setInputObj] = useRecoilState(inputObjectState);
+    const data1 = useRecoilValue(inputValue1State);
+    const data2 = useRecoilValue(inputValue2State);
+
+    const selectFunc = (event:any) => {
+        console.log('event',event.target.value)
+        setInput2Value(event.target.value);
+    }
+    const comfirm = ()=> {
+        console.log('data1',data1)
+        console.log('data2',data2)
+        hide();
+    }
     return (
         <>
             <div className="defaultModalWrap">
@@ -24,13 +40,13 @@ const myWorkModal = ({ hide }: any) => {
                 <div className="py-[30px] px-[20px]">
                     <div className="w-full h-[70px] text-[14px] mb-[20px]">
                         <div className="mb-5">날짜</div>
-                        <div className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]">
+                        <div className="myWorkModal w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]">
                             <DatePickerComponent></DatePickerComponent>
                         </div>
                     </div>
                     <div className="w-full h-[70px] text-[14px]">
                         <div className="mb-5">날짜</div>
-                        <select className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]">
+                        <select onChange={selectFunc} className="w-full h-[40px] rounded-[5px] border  border-solid border-[#dcdcdd] p-[12px] outline-none focus:border-[#dcdcdd] active:border-[#dcdcdd]">
                             <option></option>
                             <option value="VACATION:AM">반차(오전)</option>
                             <option value="VACATION:PM">반차(오후)</option>
@@ -92,11 +108,11 @@ const myWorkModal = ({ hide }: any) => {
                 </div>
                 <div className="w-full pl-[240px]">
                     <button onClick={hide} className="bg-[#FAFAFA] w-[54px] h-[30px] ml-[6px]">취소</button>
-                    <button className="bg-[#286DD6] text-[#fff] w-[54px] h-[30px]">확인</button>
+                    <button onClick={comfirm} className="bg-[#286DD6] text-[#fff] w-[54px] h-[30px]">확인</button>
                 </div>
             </div>
         </>
     );
 };
 
-export default myWorkModal;
+export default MyWorkModal;
