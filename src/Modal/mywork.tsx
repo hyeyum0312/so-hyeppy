@@ -2,22 +2,22 @@ import React, {useState} from "react";
 import {HiOutlineXMark} from "react-icons/hi2";
 import DatePickerComponent from "../Components/datepicker";
 import {useRecoilState, useRecoilValue} from "recoil";
-import {inputValue1State,inputValue2State,inputObjectState} from "../Atom/Atoms";
+import {inputValuesState, inputValue1State, inputValue2State} from "../Atom/Atoms";
 
 
 const MyWorkModal = ({ hide }: any) => {
     const [input1Value, setInput2Value] = useRecoilState(inputValue2State);
-    // const [inputObj, setInputObj] = useRecoilState(inputObjectState);
+    const [objValues, setObjValues] = useRecoilState(inputValuesState);
     const data1 = useRecoilValue(inputValue1State);
     const data2 = useRecoilValue(inputValue2State);
 
     const selectFunc = (event:any) => {
         console.log('event',event.target.value)
         setInput2Value(event.target.value);
+        setObjValues({ ...objValues, value2:event.target.value });
     }
     const comfirm = ()=> {
-        console.log('data1',data1)
-        console.log('data2',data2)
+        console.log('objInputValues',objValues)
         hide();
     }
     return (

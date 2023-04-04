@@ -15,6 +15,10 @@ export const User = atom<any>({
     name: '관리자',
   },
 });
+type InputValues = {
+  value1: string;
+  value2: string;
+};
 
 export const LoginState = atom<boolean>({
   key: 'LoginState',
@@ -42,11 +46,10 @@ export const inputValue2State = atom({
   default: '',
 });
 
-export const inputObjectState = selector({
-  key: 'inputObjectState',
-  get: ({ get }) => {
-    const input1 = get(inputValue1State);
-    const input2 = get(inputValue2State);
-    return { period:input1, type:input2 };
+export const inputValuesState = atom<InputValues>({
+  key: 'inputValuesState',
+  default: {
+    value1: '',
+    value2: '',
   },
 });

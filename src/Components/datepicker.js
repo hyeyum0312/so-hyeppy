@@ -2,10 +2,11 @@ import { useState } from 'react';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import {useRecoilState} from "recoil";
-import {inputValue1State} from "../Atom/Atoms";
+import {inputValue1State, inputValuesState} from "../Atom/Atoms";
 
 const DatePickerComponent = () => {
     const [input1Value, setInput1Value] = useRecoilState(inputValue1State);
+    const [objValues, setObjValues] = useRecoilState(inputValuesState);
     console.log('달력');
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(null);
@@ -21,6 +22,7 @@ const DatePickerComponent = () => {
         console.log('startstart',startstart)
         console.log('endend',endend)
         setInput1Value(startstart +'~'+ endend)
+        setObjValues({ ...objValues, value1: startstart +'~'+ endend });
     };
     return (
         <DatePicker
