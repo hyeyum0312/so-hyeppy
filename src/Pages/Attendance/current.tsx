@@ -18,18 +18,16 @@ const Current: React.FC = () => {
     const [modalForm, setModalForm] = useState();
     const popupObjValue = useRecoilValue(inputValuesState);
 
-    // const [isShowing, setIsShowing] = useState(false);
-    const params = useRecoilValue(urlParams);
-    const [category, setCategory] = React.useState<sideNavProps>({sideNavPropsName : '근무/휴가', name : 'Attendance'});
-
     // 근태현황
     const openModal = (info:any,modalForm:any) => {
-        console.log('modalForm >> ',modalForm)
-        console.log('info >> ',info)
         setMessage(info);
         setModalForm(modalForm);
         toggle();
     };
+
+    const vacationType = () => {
+
+    }
 
     return (
         <>
@@ -40,7 +38,7 @@ const Current: React.FC = () => {
                 </div>
                 <div className="p-3.5">
                     <div className="text-[15px] mb-5">연차 사용일: {popupObjValue.value1}</div>
-                    <div className="text-[15px]">연차 타입: {popupObjValue.value2}</div>
+                    <div className="text-[15px]">연차 타입: {popupObjValue.value3}</div>
                 </div>
                 {
                     isShowing?

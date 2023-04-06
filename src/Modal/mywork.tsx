@@ -2,24 +2,34 @@ import React, {useState} from "react";
 import {HiOutlineXMark} from "react-icons/hi2";
 import DatePickerComponent from "../Components/datepicker";
 import {useRecoilState, useRecoilValue} from "recoil";
-import {inputValuesState, inputValue1State, inputValue2State} from "../Atom/Atoms";
+import {inputValuesState, inputValue1State, inputValue2State, urlParams} from "../Atom/Atoms";
 
 
 const MyWorkModal = ({ hide }: any) => {
-    const [input1Value, setInput2Value] = useRecoilState(inputValue2State);
+    const [vacationType, setVacationType] = useState({ value: '', text: '' });
+
+    const input1Value = useRecoilValue(inputValue1State);
+    const [input2Value, setInput2Value] = useRecoilState(inputValue2State);
     const [objValues, setObjValues] = useRecoilState(inputValuesState);
-    const data1 = useRecoilValue(inputValue1State);
-    const data2 = useRecoilValue(inputValue2State);
 
     const selectFunc = (event:any) => {
-        console.log('event',event.target.value)
+        const selectedValue = event.target.value;
+        const selectedText = event.target.options[event.target.selectedIndex].text;
+        console.log('selectedValue',selectedValue)
+        console.log('selectedText',selectedText)
         setInput2Value(event.target.value);
-        setObjValues({ ...objValues, value2:event.target.value });
+        setVacationType({ value: selectedValue, text: selectedText });
+
+
+        console.log('vacationType',vacationType)
     }
     const comfirm = ()=> {
-        console.log('objInputValues',objValues)
+        console.log('vacationType',vacationType)
+
+        setObjValues({ ...objValues, value1:input1Value,value2:input2Value,value3:vacationType.text });
         hide();
     }
+    console.log('??objValues',objValues)
     return (
         <>
             <div className="defaultModalWrap">

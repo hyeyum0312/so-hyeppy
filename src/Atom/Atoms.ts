@@ -18,6 +18,7 @@ export const User = atom<any>({
 type InputValues = {
   value1: string;
   value2: string;
+  value3: string;
 };
 
 export const LoginState = atom<boolean>({
@@ -51,5 +52,6 @@ export const inputValuesState = atom<InputValues>({
   default: {
     value1: '',
     value2: '',
+    value3: '',
   },
 });
